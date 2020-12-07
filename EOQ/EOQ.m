@@ -63,7 +63,20 @@ fprintf('El costo de almacenar durante un ciclo es: $%.2f \n\n', CT_inv)
 %   ¿Cuanto tiempo para que se agote dicha cantidad?
 Tiempo_agote = Q_/d_;
 fprintf('El tiempo para que se agote dicha cantidad es: %.2f meses \n\n', Tiempo_agote)
-    
-    
-    
-    
+
+%--------------------------------------------------------------------------
+%Grafica
+fprintf('\nEspere unos instantes, el porgrama esta graficando...\n')
+c=1;  
+for n = 28600: 100: 35000
+   Galones(c) = n;
+   Costo(c) = double(F(k_,d_,n,c_,h_)) ;
+   c = c+1;
+end
+title('Relacion de costo respecto a galones')
+hold on;
+plot(Galones, Costo)
+plot(Q_, CT_inv, 'r*')
+xlabel('Galones') 
+ylabel('Costo')
+legend('Relacion costo-galon','Minimo')
